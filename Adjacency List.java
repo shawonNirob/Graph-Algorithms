@@ -16,3 +16,32 @@ public class LinkedListDemo {
         }
     }
 }
+
+//
+
+
+package dataStructure.linkedList;
+
+import java.util.LinkedList;
+
+public class AdjacencyList {
+        public static void main(String[] args) {
+            LinkedList<Integer> l[] = new LinkedList[4];
+            for(int i=0; i<4; i++){
+                l[i] = new LinkedList<>();
+            }
+            l[0].add(1);
+            l[0].add(2);
+            l[1].add(0);
+            l[1].add(2);
+            l[2].add(0);
+            l[2].add(1);
+            l[2].add(3);
+            l[3].add(2);
+            l[3].add(3);
+
+            for(int i=0; i<4; i++) {
+                System.out.println(i+"==>"+l[i]);
+            }
+        }
+    }
