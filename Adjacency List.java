@@ -38,7 +38,6 @@ public class AdjacencyList {
             l[2].add(1);
             l[2].add(3);
             l[3].add(2);
-            l[3].add(3);
 
             for(int i=0; i<4; i++) {
                 System.out.println(i+"==>"+l[i]);
