@@ -93,10 +93,10 @@ class GraphImp {
         graph.addEdge(7,4);
 
 
-        System.out.println("The Depth First Traversal of the graph is as follows :");
+        System.out.println("The Breadth First Traversal of the graph is as follows :");
         graph.BFS(0);
         System.out.println();
-        System.out.println("The Breadth First Traversal of the graph is as follows :");
+        System.out.println("The Depth First Traversal of the graph is as follows :");
         graph.DFS(0);
     }
 }
