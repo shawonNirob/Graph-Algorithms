@@ -89,24 +89,27 @@ class Solution {
 
 
 //Inorder
+//1. Go left Most
+//2. root = pop from stack the left most,  and set root =  root.right;
+//repeat 1 and 2; 
 class Solution {
     public List<Integer> inorderTraversal(TreeNode root) {
         List<Integer> list = new ArrayList<>();
         if(root==null) return list;
         Stack<TreeNode> stack = new Stack();
-        TreeNode curr = root;
         
-        while(curr != null || !stack.isEmpty()){
-            while(curr != null){
-                stack.push(curr);
-                curr=curr.left;
+        while(root != null || !stack.isEmpty()){
+            while(root != null){
+                stack.push(root);
+                root = root.left;
             }
-            curr= stack.pop();
-            list.add(curr.val);
-            curr = curr.right;
+            root = stack.pop();
+            list.add(root.val);
+            root = root.right;
         }
         return list;
     }
+}
 }
 //Morris Inorder Traverse 
 class Solution {
