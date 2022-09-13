@@ -60,8 +60,8 @@ class Solution {
         while(!stack.isEmpty()){
             TreeNode node = stack.pop();
             list.add(node.val);
-            if(node.right != null) stack.add(node.right);
             if(node.left != null) stack.add(node.left);
+            if(node.right != null) stack.add(node.right);
             
         }
         Collections.reverse(list);
