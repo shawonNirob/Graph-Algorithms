@@ -55,9 +55,10 @@ public class DirectedGraph {
 
         graph.addEdgesD(2,3);
         graph.addEdgesD(3,1);
-        graph.addEdgesD(3,1);
         graph.addEdgesD(4,0);
         graph.addEdgesD(4,1);
+        graph.addEdgesD(5,0);
+        graph.addEdgesD(5,2);
 
         System.out.println(graph.topoSortDfs(6));
     }
