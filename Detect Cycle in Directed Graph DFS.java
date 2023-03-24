@@ -21,26 +21,24 @@ public class TopoSortBFS {
     }
 
     /*
-    public boolean topoBFS(int node, int[] visited){
-        for(int i=0; i<node; i++){
-            if(visited[i]==0 && dfs(i, visited)) return true;
-        }
-        return false;
-    }
-    public boolean dfs(int node, int[] visited){
-        visited[node] = 1;
-        for(int n : adj[node]){
-            if(visited[n]==0 && dfs(n, visited)) {
-                return true;
-            }else if(visited[n]==1){
-                return true;
-            }else if(visited[n]==2){
-                return false;
+    //right, from leetcode. 100% accurate
+    
+    public boolean dfs(int node, int[] visited, LinkedList<Integer> adj[]){
+        if(visited[node]==1) return false;
+        if(visited[node]==2) return true;
+        
+        visited[node]=1;
+        
+        for(int i : adj[node]){
+            if(!dfs(i, visited, adj)){
+               return false;
             }
         }
-        visited[node] = 2;
-        return false;
+        visited[node]=2;
+        
+        return true;
     }
+    
      */
     public boolean cycleDetect(int node){
         boolean[] visited = new boolean[node];
