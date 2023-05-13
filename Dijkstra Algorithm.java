@@ -1,43 +1,102 @@
-void dijkstra(int graph[][], int src)
-    {
-        int dist[] = new int[V]; // The output array. dist[i] will hold
-        // the shortest distance from src to i
- 
-        // sptSet[i] will true if vertex i is included in shortest
-        // path tree or shortest distance from src to i is finalized
-        Boolean sptSet[] = new Boolean[V];
- 
-        // Initialize all distances as INFINITE and stpSet[] as false
-        for (int i = 0; i < V; i++) {
-            dist[i] = Integer.MAX_VALUE;
-            sptSet[i] = false;
+package dataStructure;
+
+import java.util.*;
+
+public class DijkstraAlgo{
+    public static class Edges {
+        public int destination;
+        public int weight;
+
+        public Edges(int destination, int weight) {
+            this.destination = destination;
+            this.weight = weight;
         }
- 
-        // Distance of source vertex from itself is always 0
-        dist[src] = 0;
- 
-        // Find shortest path for all vertices
-        for (int count = 0; count < V - 1; count++) {
-            // Pick the minimum distance vertex from the set of vertices
-            // not yet processed. u is always equal to src in first
-            // iteration.
-            int u = minDistance(dist, sptSet);
- 
-            // Mark the picked vertex as processed
-            sptSet[u] = true;
- 
-            // Update dist value of the adjacent vertices of the
-            // picked vertex.
-            for (int v = 0; v < V; v++)
- 
-                // Update dist[v] only if is not in sptSet, there is an
-                // edge from u to v, and total weight of path from src to
-                // v through u is smaller than current value of dist[v]
-                if (!sptSet[v] && graph[u][v] != 0 && dist[u] != Integer.MAX_VALUE && dist[u] + graph[u][v] < dist[v])
-                    dist[v] = dist[u] + graph[u][v];
-        }
- 
-        // print the constructed distance array
-        printSolution(dist);
     }
 
+    public static class Graph {
+        public int vertices;
+        public LinkedList<Edges> adj[];
+
+        public Graph(int vertices){
+            this.vertices = vertices;
+            adj = new LinkedList[vertices];
+
+            for (int i = 0; i < vertices; i++) {
+                adj[i] = new LinkedList<>();
+            }
+        }
+
+        public void addEdges(int source, int destination, int weight) {
+            Edges edges = new Edges(destination, weight);
+            adj[source].add(edges);
+        }
+    }
+
+    public void printGraph(LinkedList<Edges> adj[]){
+        for(int i=0; i< adj.length; i++){
+            for(Edges edge : adj[i]){
+                System.out.println(i+" Connected with "+edge.destination + " with weight "+ edge.weight);
+            }
+        }
+    }
+    public int[] dijkstra(int N, LinkedList<Edges> adj[], int source){
+        int[] distance = new int[N];
+        Arrays.fill(distance, Integer.MAX_VALUE);
+        distance[source] = 0;
+
+        PriorityQueue<Edges> pq = new PriorityQueue<>(Comparator.comparingInt(Edges -> Edges.weight));
+        pq.add(new Edges(source, 0));
+
+        while (!pq.isEmpty()){
+            Edges curr = pq.poll();
+            int node = curr.destination;
+            int dist = curr.weight;
+
+            if(dist > distance[node]) continue;
+
+            for(Edges neighbor : adj[node]){
+                int u = neighbor.destination;
+                int weight = neighbor.weight;
+
+                if(distance[node] + weight < distance[u]){
+                    distance[u] = distance[node] + weight;
+                    pq.add(new Edges(u, weight));
+                }
+            }
+        }
+
+        for(int i=source; i<N; i++){
+            System.out.println("Distance from source to Node "+i+" : "+distance[i]+" ");
+        }
+
+        return distance;
+    }
+
+
+
+    public static void main(String[] args){
+        DijkstraAlgo.Graph graph = new DijkstraAlgo.Graph(6);
+
+
+        graph.addEdges(1, 2, 2);
+        graph.addEdges(1, 4, 1);
+        graph.addEdges(2, 1, 2);
+        graph.addEdges(2, 3, 4);
+        graph.addEdges(2, 5, 5);
+        graph.addEdges(3, 4, 3);
+        graph.addEdges(3, 2, 4);
+        graph.addEdges(3, 5, 1);
+        graph.addEdges(4, 1, 1);
+        graph.addEdges(4, 3, 3);
+        graph.addEdges(5, 2, 5);
+        graph.addEdges(5, 3, 1);
+
+
+        DijkstraAlgo dij = new DijkstraAlgo();
+
+        dij.printGraph(graph.adj);
+        System.out.println();
+        dij.dijkstra(6, graph.adj, 1);
+        
+    }
+}
