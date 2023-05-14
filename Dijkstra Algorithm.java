@@ -61,7 +61,7 @@ public class DijkstraAlgo{
 
                 if(distance[node] + weight < distance[u]){
                     distance[u] = distance[node] + weight;
-                    pq.add(new Edges(u, weight));
+                    pq.add(new Edges(u, distance[u]));
                 }
             }
         }
@@ -170,7 +170,7 @@ public class DijkstraAlgo{
 
                 if(distance[node] + weight < distance[u]){
                     distance[u] = distance[node] + weight;
-                    pq.add(new Edges(u, weight));
+                    pq.add(new Edges(u, distance[u]));
                 }
             }
         }
