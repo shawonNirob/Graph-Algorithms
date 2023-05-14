@@ -53,7 +53,7 @@ public class DijkstraAlgo{
             int node = curr.destination;
             int dist = curr.weight;
 
-            if(dist > distance[node]) continue;
+           if(dist > distance[u]) continue; //execute at the last line of the pq in this graph
 
             for(Edges neighbor : adj[node]){
                 int u = neighbor.destination;
@@ -162,7 +162,7 @@ public class DijkstraAlgo{
             int node = curr.destination;
             int dist = curr.weight;
 
-            if(dist > distance[node]) continue;
+           if(dist > distance[u]) continue; //execute at the last line of the pq in this graph
 
             for(Edges neighbor : adj[node]){
                 int u = neighbor.destination;
