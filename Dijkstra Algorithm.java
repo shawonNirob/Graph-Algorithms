@@ -50,18 +50,18 @@ public class DijkstraAlgo{
 
         while (!pq.isEmpty()){
             Edges curr = pq.poll();
-            int node = curr.destination;
+            int u= curr.destination;
             int dist = curr.weight;
 
-           if(dist > distance[u]) continue; //execute at the last line of the pq in this graph
+            if(dist > distance[u]) continue; //execute at the last line of the pq in this graph
 
-            for(Edges neighbor : adj[node]){
-                int u = neighbor.destination;
-                int weight = neighbor.weight;
+            for(Edges neighbor : adj[u]){
+                int v = neighbor.destination;
+                int costUV = neighbor.weight;
 
-                if(distance[node] + weight < distance[u]){
-                    distance[u] = distance[node] + weight;
-                    pq.add(new Edges(u, distance[u]));
+                if(distance[u] + costUV < distance[v]){
+                    distance[v] = distance[u] + costUV;
+                    pq.add(new Edges(v, distance[v]));
                 }
             }
         }
@@ -119,7 +119,7 @@ public class DijkstraAlgo{
         }
     }
 
-    public static class Graph {
+    private static class Graph {
         public int vertices;
         public LinkedList<Edges> adj[];
 
@@ -159,18 +159,18 @@ public class DijkstraAlgo{
 
         while (!pq.isEmpty()){
             Edges curr = pq.poll();
-            int node = curr.destination;
+            int u= curr.destination;
             int dist = curr.weight;
 
-           if(dist > distance[u]) continue; //execute at the last line of the pq in this graph
+            if(dist > distance[u]) continue; //execute at the last line of the pq in this graph
 
-            for(Edges neighbor : adj[node]){
-                int u = neighbor.destination;
-                int weight = neighbor.weight;
+            for(Edges neighbor : adj[u]){
+                int v = neighbor.destination;
+                int costUV = neighbor.weight;
 
-                if(distance[node] + weight < distance[u]){
-                    distance[u] = distance[node] + weight;
-                    pq.add(new Edges(u, distance[u]));
+                if(distance[u] + costUV < distance[v]){
+                    distance[v] = distance[u] + costUV;
+                    pq.add(new Edges(v, distance[v]));
                 }
             }
         }
@@ -196,6 +196,7 @@ public class DijkstraAlgo{
         graph.addEdges(3, 5, 1);
 
 
+
         DijkstraAlgo dij = new DijkstraAlgo();
 
         dij.printGraph(graph.adj);
@@ -204,4 +205,5 @@ public class DijkstraAlgo{
 
     }
 }
+
 //
