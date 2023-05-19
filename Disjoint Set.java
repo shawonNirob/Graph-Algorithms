@@ -29,6 +29,12 @@ public class DisjointSet {
         int rootX = find(x);
         int rootY = find(y);
 
+        //cycle detection
+        if(rootX==rootY){
+            System.out.println("Cycle detected");
+            return;
+        }
+
         if(rank[rootX] > rank[rootY]){
             parrent[rootY] = rootX;
         }else if(rank[rootX] < rank[rootY]) {
@@ -47,6 +53,7 @@ public class DisjointSet {
         set.union(6,7);
         set.union(5,6);
         set.union(3,7);
+        set.union(2,5);
 
         System.out.println(set.find(1));
         //System.out.println(set.find(2)); //For path compression
@@ -62,4 +69,5 @@ public class DisjointSet {
         }
     }
 }
+
 
