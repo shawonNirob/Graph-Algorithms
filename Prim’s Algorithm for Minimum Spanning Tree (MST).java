@@ -3,7 +3,7 @@ package dataStructure;
 import java.util.*;
 
 public class PrimsAlgo{
-    static int[] parrent; //for print the MST
+    static int[] parrent; //for the Minimum Spanning Tree (MST)
   
     public static class Edges {
         public int source;
