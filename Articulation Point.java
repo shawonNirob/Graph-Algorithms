@@ -122,3 +122,59 @@ public class ArticulationPoint {
     }
 }
 
+//for understand why we need Math.min of (low[node], disc[u]) for if u already visited
+public static void main(String[] args) {
+        Graph graph = new Graph(8);
+
+        graph.addEdges(0, 1);
+        graph.addEdges(0, 2);
+        graph.addEdges(0, 3);
+        graph.addEdges(2, 3);
+        graph.addEdges(2, 4);
+        graph.addEdges(2, 5);
+        graph.addEdges(4, 6);
+        graph.addEdges(5, 6);
+
+        ArticulationPoint ap  = new ArticulationPoint();
+        ap.printGraph(graph.adj);
+
+        System.out.println();
+        List<Integer> artPoint = ap.findArticulationPoints(8, graph.adj);
+        if(artPoint.size() == 0){
+            System.out.println("Caution! There is no Articulation point.");
+        }else{
+            System.out.println(artPoint);
+        }
+
+    }
+}
+
+
+//No Articulation Point
+public static void main(String[] args) {
+        Graph graph = new Graph(8);
+
+        graph.addEdges(1, 2);
+        graph.addEdges(1, 3);
+        graph.addEdges(2, 5);
+        graph.addEdges(3, 4);
+        graph.addEdges(3, 7);
+        graph.addEdges(4, 5);
+        graph.addEdges(4, 6);
+        graph.addEdges(6, 7);
+
+        ArticulationPoint ap  = new ArticulationPoint();
+        ap.printGraph(graph.adj);
+
+        System.out.println();
+        List<Integer> artPoint = ap.findArticulationPoints(8, graph.adj);
+        if(artPoint.size() == 0){
+            System.out.println("Caution! There is no Articulation point.");
+        }else{
+            System.out.println(artPoint);
+        }
+
+    }
+}
+
+//
