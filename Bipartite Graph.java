@@ -1,3 +1,9 @@
+//A bipartite graph is a graph whose vertex set can be partitioned into two disjoint sets, 
+//often referred to as "left" and "right" sets or "X" and "Y" sets. 
+//In other words, every edge in the graph connects a vertex from one set to a vertex from the other set. 
+//No edges exist within the same set. This partitioning creates a bipartite graph with two distinct subsets of vertices.
+
+
 package dataStructure;
 
 import java.util.ArrayList;
