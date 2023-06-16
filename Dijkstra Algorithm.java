@@ -154,6 +154,7 @@ public class DijkstraAlgo{
         Arrays.fill(distance, Integer.MAX_VALUE);
         distance[source] = 0;
 
+        //sort the queue according to weight
         PriorityQueue<Edges> pq = new PriorityQueue<>(Comparator.comparingInt(Edges -> Edges.weight));
         pq.add(new Edges(source, 0));
 
