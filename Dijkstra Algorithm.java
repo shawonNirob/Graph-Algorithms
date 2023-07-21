@@ -51,16 +51,16 @@ public class DijkstraAlgo{
         while (!pq.isEmpty()){
             Edges curr = pq.poll();
             int u= curr.destination;
-            int dist = curr.weight;
+            int distU = curr.weight;
 
-            if(dist > distance[u]) continue; //execute at the last line of the pq in this graph
+            if(distU > distance[u]) continue; //execute at the last line of the pq in this graph
 
             for(Edges neighbor : adj[u]){
                 int v = neighbor.destination;
                 int costUV = neighbor.weight;
 
-                if(distance[u] + costUV < distance[v]){
-                    distance[v] = distance[u] + costUV;
+                if(distU + costUV < distance[v]){
+                    distance[v] = distU + costUV;
                     pq.add(new Edges(v, distance[v]));
                 }
             }
@@ -161,16 +161,16 @@ public class DijkstraAlgo{
         while (!pq.isEmpty()){
             Edges curr = pq.poll();
             int u= curr.destination;
-            int dist = curr.weight;
+            int distU = curr.weight;
 
-            if(dist > distance[u]) continue; //execute at the last line of the pq in this graph
+            if(distU > distance[u]) continue; //execute at the last line of the pq in this graph
 
             for(Edges neighbor : adj[u]){
                 int v = neighbor.destination;
                 int costUV = neighbor.weight;
 
-                if(distance[u] + costUV < distance[v]){
-                    distance[v] = distance[u] + costUV;
+                if(distU + costUV < distance[v]){
+                    distance[v] = distU + costUV;
                     pq.add(new Edges(v, distance[v]));
                 }
             }
